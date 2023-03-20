@@ -1,7 +1,7 @@
 
 #  Seja bem-vindo ao CRUD de empresas, espero que goste :D
 
-A aplicação apresenta páginas cadastro e gerenciamento de empresas, permitindo a consulta, alteração, inclusão e remoção de dados.
+A aplicação apresenta páginas de cadastro e gerenciamento de empresas, permitindo a consulta, alteração, inclusão e remoção de dados.
 
 Utilizei o banco de dados PostgreSQL e para fazer a conexão com o banco utilizei o Sequelize (arquivo db.config.js).
 
