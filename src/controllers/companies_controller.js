@@ -5,7 +5,7 @@ const Company = db.company;
 exports.create = (req, res) => {
 
     // Validação da requisição
-    if (!req.body.businessName || !req.body.cnpj || !req.body.address) {
+    if (!req.body.businessName || !req.body.cnpj || !req.body.address || !req.body.businessLine) {
       res.status(400).send({
         message: "Todos os campos devem ser preenchidos"
       });
@@ -15,12 +15,14 @@ exports.create = (req, res) => {
     const businessName = req.body.businessName
     const cnpj = req.body.cnpj
     const address = req.body.address
+    const businessLine = req.body.businessLine
     
     // Criação do objeto
     const company = {
       businessName: businessName,
       cnpj: cnpj,
-      address: address
+      address: address,
+      businessLine: businessLine
     };
   
     // Salva empresa no banco de dados
@@ -39,7 +41,7 @@ exports.create = (req, res) => {
 // Retorna todas as empresas
 exports.findAll = (req, res) => {
 
-    const query = `SELECT * FROM public.companies`;
+    const query = `SELECT * FROM public.companies ORDER BY "businessName"`;
 
     Company.sequelize.query(query)
         .then(data => {
@@ -52,7 +54,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Nenhum empresa localizada."
+                err.message || "Nenhuma empresa localizada."
             });
         });
 };
